@@ -1,3 +1,5 @@
+import { fetchTrendy } from "API/API"
+
 export const Home = ()=> {
     return(
        <>
@@ -7,6 +9,7 @@ export const Home = ()=> {
             <li>hghghjg</li>
             <li>hhgggffgf</li>
         </ul>
+        <button type="button" onClick={fetchTrendy}>Get started</button>
        </>
 
     )
