@@ -16,3 +16,18 @@ export const fetchTrendy = async () => {
   const ressponse = await axios(`${URL}?${OPTIONS}`);
   return ressponse.data;
 };
+
+
+
+export const fetchById = async (movieId) => {
+  const ID_URL = `https://api.themoviedb.org/3/movie/${movieId}`;
+  const OPTIONS = new URLSearchParams({
+    api_key: API_KEY,
+    // query,
+    // media_type: 'movie',
+    // time_window: 'week',
+    // per_page: 20,
+  });
+  const ressponse = await axios(`${ID_URL}?${OPTIONS}`);
+  return ressponse.data;
+};

@@ -1,8 +1,10 @@
 import { Routes, Route, NavLink } from "react-router-dom";
+// import { useState, } from "react";
 import styled from "styled-components";
 import  {Home}  from "pages/Home";
 import  {Movies}  from "pages/Movies";
 import {MovieDetails} from "pages/MovieDetails";
+
 
 const StyledLink = styled(NavLink)`
   color: black;
@@ -14,6 +16,29 @@ const StyledLink = styled(NavLink)`
 
 
 export const App = () => {
+// const [id, setId] = useState('')
+
+// const getId = movieId => {
+//   setId(movieId)
+  
+// }
+
+// useEffect(()=>{
+//  if(!id){
+//   return
+//  }
+//  const getMoviesById = async () => {
+//   try {
+//       const res = await fetchById(id); 
+//       console.log(res);
+//       // setMovies(results)  
+//   } catch (error) {
+//      console.log(error.message); 
+//   }
+// }
+// getMoviesById()
+// },[id])
+
   return (
     <div>
       <nav>
