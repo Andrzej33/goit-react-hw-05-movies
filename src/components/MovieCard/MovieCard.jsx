@@ -7,7 +7,8 @@ const imageUrl = `https://image.tmdb.org/t/p/w300${poster_path}`
     return(
        <>
         <div>
-            <button type="button">Go Back</button>
+        <Link to="/" end><button type="button">Go Back</button></Link>
+            
             <div>
 <img src={imageUrl
 } alt="" />
