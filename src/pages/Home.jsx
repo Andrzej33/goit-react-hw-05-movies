@@ -13,7 +13,7 @@ useEffect(()=>{
     const getTrendyMovies = async () => {
         try {
             const {results} = await fetchTrendy(); 
-            console.log(results);
+            // console.log(results);
             setMovies(results)  
         } catch (error) {
            console.log(error.message); 
@@ -28,7 +28,7 @@ getTrendyMovies()
           {movies.map(movie=>(<li key={movie.id}
         //    onClick={()=>getId(movie.id)}
            >
-          <Link to={`${movie.id}`}>{movie.original_title}</Link>
+          <Link to={`/movies/${movie.id}`}>{movie.original_title}</Link>
           </li>))} 
         </ul>}
         {/* <button type="button" onClick={fetchTrendy}>Get started</button> */}
