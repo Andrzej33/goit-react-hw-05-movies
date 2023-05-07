@@ -22,13 +22,7 @@ const imageUrl = `https://image.tmdb.org/t/p/w300${poster_path}`
 </div>
             </div>
         </div>
-        <div>
-            <p>Additional information</p>
-            <ul>
-                <li><Link to={`/movies/${movie.id}/cast`}>Cast</Link></li>
-                <li><Link to={`/movies/${movie.id}/review`}>Reviews</Link></li>
-            </ul>
-        </div>
+      
        </>
     )
 }

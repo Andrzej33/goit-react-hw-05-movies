@@ -1,6 +1,7 @@
 import { fetchTrendy } from "API/API";
+import { MoviesList } from "components/MoviesList/MoviesList";
 import {useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+
 
 export const Home = ()=> {
 
@@ -24,14 +25,7 @@ getTrendyMovies()
     return(
        <>
        <h1>Trending Movies</h1>
-        {movies && <ul>
-          {movies.map(movie=>(<li key={movie.id}
-        //    onClick={()=>getId(movie.id)}
-           >
-          <Link to={`/movies/${movie.id}`}>{movie.original_title}</Link>
-          </li>))} 
-        </ul>}
-        {/* <button type="button" onClick={fetchTrendy}>Get started</button> */}
+        {movies && <MoviesList movies={movies}/>}
        </>
 
     )
