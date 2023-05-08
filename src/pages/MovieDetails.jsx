@@ -14,7 +14,7 @@ useEffect(()=>{
   const getMovieById = async() =>{
     try {
       const res = await fetchById(movieId); 
-      console.log(res);
+      // console.log(res);
       setMovie(res)
     } catch (error) {
       console.log(error.message);
@@ -23,9 +23,6 @@ useEffect(()=>{
   getMovieById()
 },[movieId]);
 
-// const handleActors = () => {
-
-// }
 
 
 
