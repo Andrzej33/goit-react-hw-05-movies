@@ -23,20 +23,20 @@ useEffect(()=>{
   getMovieById()
 },[movieId]);
 
-const getActors = () => {
+const getActors = async () => {
   try {
-    const res =  fetchCreditsById(movieId); 
-    
-    setActors(res)
+    const res = await fetchCreditsById(movieId) 
+    const {cast} = res;
+    setActors(cast)
    
   } catch (error) {
     console.log(error.message);
   }
 }
 
-const getReview = () => {
+const getReview = async() => {
   try {
-    const res =  fetchReviewById(movieId)
+    const res =  await fetchReviewById(movieId)
     
     setReview(res)
    

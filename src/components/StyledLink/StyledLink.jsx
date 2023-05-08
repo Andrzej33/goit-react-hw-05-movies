@@ -1,11 +1,30 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 
-export const StyledLink = styled(NavLink)`
+export const StyledNavLink = styled(NavLink)`
     color: black;
-&:hover{
+    text-decoration: none;
+    font-size: 24px;
+/* &:hover{
   color: orange;
-}  
+} */
+&.active {
+    color: darkblue;
+    font-weight: 500;
+    
+  }  
+
+`
+
+export const StyledLink = styled(Link)`
+    color: black;
+    text-decoration: none;
+&:hover{
+  color: darkblue;
+}
+/* &.active {
+    color: darkblue;
+  }   */
 
 `

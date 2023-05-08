@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import { StyledLink } from "components/StyledLink/StyledLink";
+
 
 export const MoviesList = ({movies}) => {
 
@@ -7,7 +8,7 @@ export const MoviesList = ({movies}) => {
         {movies.map(movie=>(<li key={movie.id}
       //    onClick={()=>getId(movie.id)}
          >
-        <Link to={`/movies/${movie.id}`}>{movie.title} {movie.title !== movie.original_title && <span>:({movie.original_title})</span>}</Link>
+        <StyledLink to={`/movies/${movie.id}`}>{movie.title} {movie.title !== movie.original_title && <span>:({movie.original_title})</span>}</StyledLink>
         </li>))} 
       </ul> 
     )
