@@ -1,5 +1,8 @@
 import { Container } from "components/Container/Container";
+import { Loader } from "components/Loader/Loader";
 import { StyledNavLink } from "components/StyledLink/StyledLink";
+
+import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
 
 export const SharedLayout = () => {
@@ -11,10 +14,13 @@ export const SharedLayout = () => {
           Home
         </StyledNavLink>
         <StyledNavLink to="/movies">Movies</StyledNavLink>
-        {/* <StyledLink to="/products">Products</StyledLink> */}
+        
       </nav>
     </header>
-<Outlet />
+
+    <Suspense fallback={<Loader/>}>
+        <Outlet />
+      </Suspense>
       </Container>
       
         

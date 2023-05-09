@@ -3,7 +3,7 @@ import { MoviesList } from "components/MoviesList/MoviesList";
 import {useState, useEffect } from "react";
 
 
-export const Home = ()=> {
+ const Home = ()=> {
 
 const [movies,setMovies] = useState([]);
 
@@ -30,3 +30,5 @@ getTrendyMovies()
 
     )
 }
+
+export default Home;

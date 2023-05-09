@@ -3,12 +3,14 @@ import { useParams } from "react-router-dom";
 import { fetchById, } from "API/API";
 import { useState, useEffect } from "react";
 import { MovieCard } from "components/MovieCard/MovieCard";
-import { Link,Outlet } from "react-router-dom";
+import { Link,Outlet, useLocation } from "react-router-dom";
+import { Loader } from "components/Loader/Loader";
 
-export const MovieDetails = () => {
+ const MovieDetails = () => {
     const { movieId } = useParams();
 const[movie,setMovie] = useState({});
 
+const location = useLocation();
 
 useEffect(()=>{
   const getMovieById = async() =>{
@@ -29,6 +31,7 @@ useEffect(()=>{
     
     return (
         <>
+        <Link to={location?.state?.from ?? '/'} ><button type="button">Go Back</button></Link>
         <MovieCard movie={movie}/>
         <div>
             <p>Additional information</p>
@@ -41,7 +44,7 @@ useEffect(()=>{
                  ><Link to="review">Reviews</Link></li>
             </ul>
         </div>
-        <Suspense fallback={<div>Loading subpage...</div>}>
+        <Suspense fallback={<Loader/>}>
         <Outlet />
       </Suspense>
         
@@ -50,3 +53,4 @@ useEffect(()=>{
     )
   };
 
+export default MovieDetails;

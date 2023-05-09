@@ -5,7 +5,7 @@ import { MoviesList } from "components/MoviesList/MoviesList";
 
 
 
-export const Movies = () => {
+ const Movies = () => {
 
     const [searchName, setSearchName] = useState('');
     const [movies,setMovies] = useState([]);
@@ -50,3 +50,5 @@ export const Movies = () => {
         </>
     )
 }
+
+export default Movies;
