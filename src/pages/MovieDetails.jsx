@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import { useParams } from "react-router-dom";
 import { fetchById, } from "API/API";
 import { useState, useEffect } from "react";
+
 import { MovieCard } from "components/MovieCard/MovieCard";
 import { Link,Outlet, useLocation } from "react-router-dom";
 import { Loader } from "components/Loader/Loader";

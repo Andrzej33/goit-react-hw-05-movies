@@ -1,6 +1,7 @@
 import { fetchByQuery } from "API/API";
 import {useState, useEffect } from "react";
 import { MoviesList } from "components/MoviesList/MoviesList";
+import { toast } from 'react-toastify'
 // import { Link } from "react-router-dom";
 
 
@@ -9,18 +10,26 @@ import { MoviesList } from "components/MoviesList/MoviesList";
 
     const [searchName, setSearchName] = useState('');
     const [movies,setMovies] = useState([]);
+   
 
     useEffect(()=>{
+        
+    if (!searchName) return;
+    
         const getTrendyMovies = async () => {
             try {
                 const {results} = await fetchByQuery(searchName); 
-                // console.log(results);
+                if(!results.length){
+                    setMovies([])
+                    return toast(`We find nothing about ${searchName}`)
+                }
                 setMovies(results)  
             } catch (error) {
-               console.log(error.message); 
+                toast.error(error.message);
             }
         }
-    getTrendyMovies()
+    getTrendyMovies();
+    // return ()=>{controller.abort()}
     },[searchName])
 
     const handleSubmit = e => {
@@ -30,7 +39,7 @@ import { MoviesList } from "components/MoviesList/MoviesList";
     if (searchName.trim() === '') {
         // toast.info('YOUR SEARCH QUERY IS EMPTY',{position: toast.POSITION.TOP_CENTER})
         // setSearchValue(event.target.value);
-        return prompt('nothing')
+        return toast('Please enter your request')
       }
     //   console.log(searchName);
     setSearchName(searchName)

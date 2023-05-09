@@ -21,7 +21,8 @@ export const fetchById = async (movieId) => {
 
 
 export const fetchByQuery = async (query) => {
-  const ressponse = await axios(`${URL}search/movie?api_key=${API_KEY}&query=${query}&language=en-US&page=1&include_adult=false`);
+  const controller = new AbortController()
+  const ressponse = await axios(`${URL}search/movie?api_key=${API_KEY}&query=${query}&language=en-US&page=1&include_adult=false`,{signal: controller.signal});
   return ressponse.data;
 };
 

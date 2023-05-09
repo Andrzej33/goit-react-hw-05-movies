@@ -1,6 +1,8 @@
 import { lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 import { SharedLayout } from "./SharedLayout/SharedLayout";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const Home = lazy(() => import("pages/Home"));
 const Movies = lazy(() => import("pages/Movies"));
 const MovieDetails = lazy(() => import("pages/MovieDetails"));
@@ -18,7 +20,7 @@ export const App = () => {
   return (
     
 
-   
+   <>
       <Routes>
 <Route path="/" element={<SharedLayout />}>
 <Route index element={<Home/>}/>
@@ -30,6 +32,7 @@ export const App = () => {
 <Route path="*" element={<Home/>}/>
 </Route>
       </Routes>
-    
+      <ToastContainer />
+      </>
   );
 };
