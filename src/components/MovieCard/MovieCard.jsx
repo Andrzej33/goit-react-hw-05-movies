@@ -1,3 +1,4 @@
+import { StyledCardContainer } from "./StyledMovieCard";
 
 
 export const MovieCard =({movie}) => {
@@ -22,13 +23,13 @@ const imageUrl = poster_path? `https://image.tmdb.org/t/p/w400/${poster_path}`:
     
         
             
-            <div>
+            <StyledCardContainer>
 <img src={imageUrl} alt={original_title} />
 <div>
 
     <h2>{original_title ?? 'Unknown'}
     {release && <span>{release}</span>}</h2>
-    <p>{roundedAverage}</p>
+    <h3>{roundedAverage}</h3>
     {overview && 
         <div>
             <h3>Overview</h3>
@@ -39,7 +40,7 @@ const imageUrl = poster_path? `https://image.tmdb.org/t/p/w400/${poster_path}`:
         <h3>Genres</h3> <p>{genres.map(genre => genre.name).join(', ')}</p>
     </div>)}
 </div>
-            </div>
+</StyledCardContainer>
         
       
     

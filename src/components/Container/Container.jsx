@@ -7,3 +7,17 @@ export const Container = styled.div`
   padding: 30px 20px;
   margin: 0 auto;
 `;
+
+export const StyledHeader = styled.header`
+background-color: rgba(0, 0, 0, 0.05);
+padding-left: 70px;
+height: 60px;
+display: flex;
+    align-items: center;
+nav{
+  display: flex;
+    
+    gap: 30px;
+
+}
+`;

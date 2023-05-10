@@ -6,6 +6,8 @@ import { useState, useEffect } from "react";
 import { MovieCard } from "components/MovieCard/MovieCard";
 import { Link,Outlet, useLocation } from "react-router-dom";
 import { Loader } from "components/Loader/Loader";
+import { StyledLink } from "components/StyledLink/StyledLink";
+import { AdditionalList, AdditionalTitle } from "components/MoviesList/StyledMovieList";
 
  const MovieDetails = () => {
   const location = useLocation();
@@ -21,7 +23,7 @@ useEffect(()=>{
     setIsLoading(true)
     try {
       const res = await fetchById(movieId); 
-      // console.log(res);
+      
       setMovie(res)
     } catch (error) {
       console.log(error.message);
@@ -41,15 +43,13 @@ useEffect(()=>{
         <Link to={previousPage.current} ><button type="button">Go Back</button></Link>
         <MovieCard movie={movie}/>
         <div>
-            <p>Additional information</p>
-            <ul>
-                <li 
-                // onClick={handleActors}
-                ><Link to="cast">Cast</Link></li>
+            <AdditionalTitle>Additional information</AdditionalTitle>
+            <AdditionalList>
+                <li ><StyledLink to="cast">Cast</StyledLink> </li>
                 <li
-                //  onClick={getReview}
-                 ><Link to="review">Reviews</Link></li>
-            </ul>
+                
+                 ><StyledLink to="review">Reviews</StyledLink></li>
+            </AdditionalList>
         </div>
         <Suspense fallback={<Loader/>}>
         <Outlet />
