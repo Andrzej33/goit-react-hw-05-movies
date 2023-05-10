@@ -2,26 +2,29 @@ import { fetchByQuery } from "API/API";
 import {useState, useEffect } from "react";
 import { MoviesList } from "components/MoviesList/MoviesList";
 import { toast } from 'react-toastify'
+import { useSearchParams } from "react-router-dom";
 // import { Link } from "react-router-dom";
 
 
 
  const Movies = () => {
 
-    const [searchName, setSearchName] = useState('');
+   
+    const [searchParams, setSearchParams] = useSearchParams()
     const [movies,setMovies] = useState([]);
+    const query = searchParams.get("query")
    
 
     useEffect(()=>{
         
-    if (!searchName) return;
+    if (!query) return;
     
         const getTrendyMovies = async () => {
             try {
-                const {results} = await fetchByQuery(searchName); 
+                const {results} = await fetchByQuery(query); 
                 if(!results.length){
                     setMovies([])
-                    return toast(`We find nothing about ${searchName}`)
+                    return toast(`We find nothing about ${query}`)
                 }
                 setMovies(results)  
             } catch (error) {
@@ -30,7 +33,7 @@ import { toast } from 'react-toastify'
         }
     getTrendyMovies();
     // return ()=>{controller.abort()}
-    },[searchName])
+    },[query])
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -42,7 +45,7 @@ import { toast } from 'react-toastify'
         return toast('Please enter your request')
       }
     //   console.log(searchName);
-    setSearchName(searchName)
+    setSearchParams({query: searchName})
       e.target.reset();
     };
       
