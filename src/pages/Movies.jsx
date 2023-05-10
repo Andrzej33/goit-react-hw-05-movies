@@ -4,6 +4,7 @@ import { MoviesList } from "components/MoviesList/MoviesList";
 import { toast } from 'react-toastify'
 import { useSearchParams } from "react-router-dom";
 import { Loader } from "components/Loader/Loader";
+import { StyledForm } from "components/StyledForm/StytledForm";
 
 
 
@@ -57,10 +58,10 @@ import { Loader } from "components/Loader/Loader";
 
     return(
         <>
-         <form onSubmit={handleSubmit}>
+         <StyledForm onSubmit={handleSubmit}>
             <input type="text" name="name" />
             <button type="submit">Search</button>
-        </form>
+            </StyledForm>
         {isLoading && <Loader/>}
         {movies && <MoviesList movies={movies}/>}
         </>
