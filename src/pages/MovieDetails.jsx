@@ -12,11 +12,13 @@ import { Loader } from "components/Loader/Loader";
   const previousPage = useRef(location?.state?.from ?? '/');
     const { movieId } = useParams();
 const[movie,setMovie] = useState({});
+const [isLoading, setIsLoading] = useState(false);
 
 
 
 useEffect(()=>{
   const getMovieById = async() =>{
+    setIsLoading(true)
     try {
       const res = await fetchById(movieId); 
       // console.log(res);
@@ -24,6 +26,7 @@ useEffect(()=>{
     } catch (error) {
       console.log(error.message);
     }
+    finally{setIsLoading(false)}
   }
   getMovieById()
 },[movieId]);
@@ -34,6 +37,7 @@ useEffect(()=>{
     
     return (
         <>
+        {isLoading && <Loader/>}
         <Link to={previousPage.current} ><button type="button">Go Back</button></Link>
         <MovieCard movie={movie}/>
         <div>

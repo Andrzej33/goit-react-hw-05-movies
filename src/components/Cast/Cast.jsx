@@ -1,13 +1,16 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { fetchCreditsById } from "API/API";
+import { Loader } from "components/Loader/Loader";
 
  const Cast = () => {
     const { movieId } = useParams();
     const[actors,setActors] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(()=>{
         const getActors = async () => {
+          setIsLoading(true)
             try {
               const res = await fetchCreditsById(movieId) 
               const {cast} = res;
@@ -16,12 +19,14 @@ import { fetchCreditsById } from "API/API";
             } catch (error) {
               console.log(error.message);
             }
+            finally{setIsLoading(false)}
           }
         getActors()
       },[movieId]);
 
     return(
        <>
+       {isLoading && <Loader/>}
        {actors.length ? (
         <ul>{actors.map(actor => 
             <li key={actor.id}>

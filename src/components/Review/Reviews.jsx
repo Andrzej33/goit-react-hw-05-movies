@@ -1,13 +1,16 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { fetchReviewById } from "API/API";
+import { Loader } from "components/Loader/Loader";
 
  const Reviews = () => {
     const { movieId } = useParams();
     const[reviews,setReviews] = useState([]);
-
+    const [isLoading, setIsLoading] = useState(false);
+    
     useEffect(()=>{
         const getReview = async () => {
+          setIsLoading(true)
             try {
               const res = await fetchReviewById(movieId) 
               const {results} = res;
@@ -16,12 +19,14 @@ import { fetchReviewById } from "API/API";
             } catch (error) {
               console.log(error.message);
             }
+            finally{setIsLoading(false)}
           }
         getReview()
       },[movieId]);
 
     return(
        <>
+        {isLoading && <Loader/>}
        {reviews.length ? (
         <ul>{reviews.map(review => 
             <li key={review.id}>

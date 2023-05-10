@@ -3,7 +3,8 @@ import {useState, useEffect } from "react";
 import { MoviesList } from "components/MoviesList/MoviesList";
 import { toast } from 'react-toastify'
 import { useSearchParams } from "react-router-dom";
-// import { Link } from "react-router-dom";
+import { Loader } from "components/Loader/Loader";
+
 
 
 
@@ -12,13 +13,14 @@ import { useSearchParams } from "react-router-dom";
    
     const [searchParams, setSearchParams] = useSearchParams()
     const [movies,setMovies] = useState([]);
+    const [isLoading, setIsLoading] = useState(false)
     const query = searchParams.get("query")
    
 
     useEffect(()=>{
         
     if (!query) return;
-    
+    setIsLoading(true)
         const getTrendyMovies = async () => {
             try {
                 const {results} = await fetchByQuery(query); 
@@ -30,6 +32,7 @@ import { useSearchParams } from "react-router-dom";
             } catch (error) {
                 toast.error(error.message);
             }
+            finally{setIsLoading(false)}
         }
     getTrendyMovies();
     // return ()=>{controller.abort()}
@@ -58,6 +61,7 @@ import { useSearchParams } from "react-router-dom";
             <input type="text" name="name" />
             <button type="submit">Search</button>
         </form>
+        {isLoading && <Loader/>}
         {movies && <MoviesList movies={movies}/>}
         </>
     )
