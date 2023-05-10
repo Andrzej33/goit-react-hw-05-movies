@@ -44,8 +44,7 @@ import { StyledForm } from "components/StyledForm/StytledForm";
         const formData = new FormData(e.target);
     const searchName = formData.get('name').toLowerCase();
     if (searchName.trim() === '') {
-        // toast.info('YOUR SEARCH QUERY IS EMPTY',{position: toast.POSITION.TOP_CENTER})
-        // setSearchValue(event.target.value);
+       
         return toast('Please enter your request')
       }
     //   console.log(searchName);

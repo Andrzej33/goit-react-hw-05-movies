@@ -7,7 +7,7 @@ import { MovieCard } from "components/MovieCard/MovieCard";
 import { Link,Outlet, useLocation } from "react-router-dom";
 import { Loader } from "components/Loader/Loader";
 import { StyledLink } from "components/StyledLink/StyledLink";
-import { AdditionalList, AdditionalTitle } from "components/MoviesList/StyledMovieList";
+import { AdditionalContainer, AdditionalList, AdditionalTitle } from "components/MoviesList/StyledMovieList";
 
  const MovieDetails = () => {
   const location = useLocation();
@@ -42,7 +42,7 @@ useEffect(()=>{
         {isLoading && <Loader/>}
         <Link to={previousPage.current} ><button type="button">Go Back</button></Link>
         <MovieCard movie={movie}/>
-        <div>
+        <AdditionalContainer>
             <AdditionalTitle>Additional information</AdditionalTitle>
             <AdditionalList>
                 <li ><StyledLink to="cast">Cast</StyledLink> </li>
@@ -50,7 +50,7 @@ useEffect(()=>{
                 
                  ><StyledLink to="review">Reviews</StyledLink></li>
             </AdditionalList>
-        </div>
+            </AdditionalContainer>
         <Suspense fallback={<Loader/>}>
         <Outlet />
       </Suspense>

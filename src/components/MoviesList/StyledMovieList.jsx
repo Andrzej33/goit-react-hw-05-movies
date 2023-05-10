@@ -13,6 +13,10 @@ export const AdditionalTitle = styled.h4`
     font-size: 22px;
 `
 
+export const AdditionalContainer = styled.div`
+    background-color: goldenrod;
+`
+
 export const AdditionalList = styled.ul`
     list-style: none;
     display: flex;
