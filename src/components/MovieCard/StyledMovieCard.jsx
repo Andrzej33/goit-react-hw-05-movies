@@ -1,9 +1,9 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const StyledCardContainer = styled.div`
-background-color: silver;
-    padding: 25px;
-    display: flex;
-gap: 40px;
-margin-top: 15px;
-`
+  background-color: silver;
+  padding: 25px;
+  display: flex;
+  gap: 40px;
+  margin-top: 15px;
+`;
