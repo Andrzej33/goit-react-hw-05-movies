@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { fetchCreditsById } from 'API/API';
 import { Loader } from 'components/Loader/Loader';
-import { CastList } from './CastStyled';
+import { CastList, ImageCard } from './CastStyled';
 
 const Cast = () => {
   const { movieId } = useParams();
@@ -33,6 +33,7 @@ const Cast = () => {
         <CastList>
           {actors.map(actor => (
             <li key={actor.id}>
+              <ImageCard>
               {actor.profile_path ? (
                 <img
                   src={`https://image.tmdb.org/t/p/w200${actor.profile_path}`}
@@ -41,9 +42,10 @@ const Cast = () => {
               ) : (
                 <img
                   src={`https://via.placeholder.com/200x300?text=Image+not+found`}
-                  alt={actor.name}
+                  alt="Not found"
                 />
               )}
+              </ImageCard>
               <h3>{actor.name}</h3>
               <p>Character : {actor.character}</p>
             </li>
