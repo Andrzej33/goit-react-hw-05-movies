@@ -4,10 +4,11 @@ import { fetchById, } from "API/API";
 import { useState, useEffect } from "react";
 
 import { MovieCard } from "components/MovieCard/MovieCard";
-import { Link,Outlet, useLocation } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { Loader } from "components/Loader/Loader";
 import { StyledLink } from "components/StyledLink/StyledLink";
 import { AdditionalContainer, AdditionalList, AdditionalTitle } from "components/MoviesList/StyledMovieList";
+import { GoBackBtn } from "components/GoBackBtn/GoBackBtnStyled";
 
  const MovieDetails = () => {
   const location = useLocation();
@@ -40,7 +41,7 @@ useEffect(()=>{
     return (
         <>
         {isLoading && <Loader/>}
-        <Link to={previousPage.current} ><button type="button">Go Back</button></Link>
+        <GoBackBtn to={previousPage.current} >go back</GoBackBtn>
         <MovieCard movie={movie}/>
         <AdditionalContainer>
             <AdditionalTitle>Additional information</AdditionalTitle>

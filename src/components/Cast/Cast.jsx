@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { fetchCreditsById } from "API/API";
 import { Loader } from "components/Loader/Loader";
+import { CastList } from "./CastStyled";
 
  const Cast = () => {
     const { movieId } = useParams();
@@ -28,7 +29,7 @@ import { Loader } from "components/Loader/Loader";
        <>
        {isLoading && <Loader/>}
        {actors.length ? (
-        <ul>{actors.map(actor => 
+        <CastList>{actors.map(actor => 
             <li key={actor.id}>
                 {actor.profile_path ? (
                     <img
@@ -41,9 +42,9 @@ import { Loader } from "components/Loader/Loader";
                       alt={actor.name}
                     />
                   )}
-                <h3>Name: {actor.name}</h3>
-                <p>Character: {actor.character}</p>
-            </li>)}</ul> ) : (
+                <h3>{actor.name}</h3>
+                <p>Character : {actor.character}</p>
+            </li>)}</CastList> ) : (
                <p>We do not have any information about actors</p> 
             )
 

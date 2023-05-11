@@ -14,7 +14,7 @@ export const AdditionalTitle = styled.h4`
 `
 
 export const AdditionalContainer = styled.div`
-    background-color: goldenrod;
+    background-color: gainsboro;
 `
 
 export const AdditionalList = styled.ul`
